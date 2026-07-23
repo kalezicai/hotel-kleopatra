@@ -1,46 +1,35 @@
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Stats } from "@/components/Stats";
-import { Accommodations } from "@/components/Accommodations";
-import { Amenities } from "@/components/Amenities";
-import { InfiniteImageField } from "@/components/ui/infinite-image-field";
-import { Restaurant } from "@/components/Restaurant";
-import { Location } from "@/components/Location";
-import { Reviews } from "@/components/Reviews";
-import { Booking } from "@/components/Booking";
-import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
   return (
-    <>
-      <main id="main-content">
-        <Hero />
-        <About />
-        <Stats />
-        <Accommodations />
-        <Amenities />
-        <section id="gallery" className="relative bg-cream py-24 md:py-32">
-          <div className="container-lux">
-            <div className="mx-auto max-w-2xl text-center">
-              <span className="eyebrow">Gallery</span>
-              <h2 className="mt-4 font-display text-4xl leading-tight text-chocolate md:text-5xl">
-                Moments by the <span className="text-gradient-gold italic">Adriatic</span>
-              </h2>
-              <p className="mt-5 font-manrope text-chocolate/70">
-                A glimpse of the light, the water and the quiet luxury that awaits.
-              </p>
-            </div>
+    <main id="main-content">
+      <Hero />
+      <About />
+      <Stats />
+
+      {/* Bridge section — booking CTA */}
+      <section className="relative bg-chocolate py-20 md:py-28">
+        <div className="container-lux text-center">
+          <span className="eyebrow !text-gold">Start your escape</span>
+          <h2 className="mt-4 font-display text-4xl leading-tight text-white md:text-5xl">
+            Ready to experience{" "}
+            <span className="text-gradient-gold italic">Hotel Kleopatra</span>?
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl font-manrope text-white/65">
+            Browse our rooms, check availability, and book direct for the best rate.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a href="/accommodations" className="btn-gold">
+              View Accommodations
+            </a>
+            <a href="/rooms" className="btn-ghost !text-white !border-white/30 hover:!bg-white hover:!text-chocolate">
+              All Room Types
+            </a>
           </div>
-          <div className="mt-12 h-[70vh] w-full overflow-hidden">
-            <InfiniteImageField className="h-full w-full" borderRadius={16} />
-          </div>
-        </section>
-        <Restaurant />
-        <Location />
-        <Reviews />
-        <Booking />
-      </main>
-      <Footer />
-    </>
+        </div>
+      </section>
+    </main>
   );
 }

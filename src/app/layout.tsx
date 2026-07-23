@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Playfair_Display, Cormorant_Garamond, Inter, Manrope } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -164,7 +165,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="apple-touch-icon" href="/images/logo.png" />
         <link rel="preconnect" href="https://www.openstreetmap.org" />
         <link rel="dns-prefetch" href="https://www.openstreetmap.org" />
-        <link rel="preload" href="/videos/vidoup.mp4" as="video" type="video/mp4" fetchPriority="high" />
+        <link rel="preload" href="/videos/vidoup.mp4" as="video" type="video/mp4" fetchPriority="high" media="(min-width: 768px)" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -173,6 +175,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="bg-ivory text-chocolate antialiased">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

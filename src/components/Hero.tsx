@@ -44,7 +44,7 @@ export function Hero() {
           playsInline
           poster="/images/hero.jpg"
           className="h-full w-full object-cover"
-          style={{ animation: "ken-burns 25s linear infinite alternate" }}
+          style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform" }}
         >
           <source src="/videos/vidoup.mp4" type="video/mp4" />
         </video>
@@ -155,6 +155,9 @@ export function Hero() {
       </a>
 
       <style>{`
+        @media (prefers-reduced-motion: reduce) {
+          video { animation: none !important; }
+        }
         .lux-input {
           width: 100%;
           background: rgba(255,255,255,0.7);

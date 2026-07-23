@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { LogoMark } from "./Logo";
 import { Mail, Phone, MapPin, Send, Check, ArrowUp } from "lucide-react";
+import Link from "next/link";
 
 function InstagramIcon({ size = 16 }: { size?: number }) {
   return (
@@ -23,13 +24,13 @@ function FacebookIcon({ size = 16 }: { size?: number }) {
 }
 
 const quickLinks = [
-  { label: "Rooms", href: "#all-rooms" },
-  { label: "Accommodation", href: "#accommodations" },
-  { label: "Amenities", href: "#amenities" },
-  { label: "Dining", href: "#restaurant" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Location", href: "#location" },
-  { label: "Reviews", href: "#reviews" },
+  { label: "Rooms", href: "/rooms" },
+  { label: "Stay", href: "/accommodations" },
+  { label: "Experience", href: "/experience" },
+  { label: "Dining", href: "/dining" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Location", href: "/location" },
+  { label: "Guest Reviews", href: "/guests" },
 ];
 
 const policies = [
@@ -121,9 +122,9 @@ export function Footer() {
             <ul className="mt-5 space-y-3">
               {quickLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="link-underline font-manrope text-sm text-white/65 hover:text-white">
+                  <Link href={l.href} className="link-underline font-manrope text-sm text-white/65 hover:text-white">
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -177,7 +178,7 @@ export function Footer() {
             © {new Date().getFullYear()} Hotel Kleopatra. All rights reserved. · Crafted with care on the Adriatic.
           </p>
           <a
-            href="#top"
+            href="/"
             className="flex items-center gap-2 font-sans text-xs text-white/55 transition hover:text-gold"
           >
             Back to top <ArrowUp size={14} />
