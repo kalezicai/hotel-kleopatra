@@ -1,7 +1,6 @@
 services:
-  - type: web
+  - type: static site
     name: hotel-kleopatra
-    runtime: static
     buildCommand: npm install; npm run build
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: false
