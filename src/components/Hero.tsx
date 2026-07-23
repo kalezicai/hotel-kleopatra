@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 import { CalendarDays, Users, BedDouble, ArrowRight, ChevronDown, Star } from "lucide-react";
 
 const roomOptions = [
@@ -23,18 +22,11 @@ export function Hero() {
   const [guests, setGuests] = useState("2 Adults");
   const [room, setRoom] = useState("Comfort Double Room");
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(async () => {
-      try {
-        await videoRef.current?.play();
-        setVideoReady(true);
-      } catch {
-        /* autoplay blocked — keep poster visible */
-      }
-    }, 2000);
-    return () => clearTimeout(t);
+    videoRef.current?.play().catch(() => {
+      /* autoplay blocked */
+    });
   }, []);
 
   const handleCheck = (e: React.FormEvent) => {
@@ -49,28 +41,22 @@ export function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden">
-      {/* Background: static image always visible, video fades in */}
+      {/* Background video with overlay */}
       <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/hero.webp"
-          alt=""
-          fill
-          priority
-          className={`object-cover transition-opacity duration-1000 ${videoReady ? "opacity-0" : "opacity-100"}`}
-          style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform" }}
-        />
         <video
           ref={videoRef}
           muted
           loop
           playsInline
+          autoPlay
           preload="auto"
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${videoReady ? "opacity-100" : "opacity-0"}`}
+          className="absolute inset-0 h-full w-full object-cover"
           style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
         >
           <source src="/videos/vidoup.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-chocolate/55 via-chocolate/25 to-chocolate/65" />
+        <div className="absolute inset-0 bg-chocolate/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-chocolate/60 via-chocolate/20 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-chocolate/45 via-transparent to-transparent" />
       </div>
 
