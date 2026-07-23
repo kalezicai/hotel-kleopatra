@@ -1,5 +1,3 @@
-"use client";
-
 import { Reveal } from "./Reveal";
 import { reviews } from "@/lib/data";
 import { Star, Quote } from "lucide-react";

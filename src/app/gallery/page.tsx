@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { InfiniteImageField } from "@/components/ui/infinite-image-field";
 import { Camera } from "lucide-react";
+import nextDynamic from "next/dynamic";
+
+const InfiniteImageField = nextDynamic(() =>
+  import("@/components/ui/infinite-image-field").then((m) => ({ default: m.InfiniteImageField })),
+  { ssr: true }
+);
 
 export const dynamic = "force-static";
 

@@ -3,11 +3,16 @@ import { About } from "@/components/About";
 import { Stats } from "@/components/Stats";
 import { Accommodations } from "@/components/Accommodations";
 import { Amenities } from "@/components/Amenities";
-import { InfiniteImageField } from "@/components/ui/infinite-image-field";
 import { Restaurant } from "@/components/Restaurant";
 import { Location } from "@/components/Location";
 import { Reviews } from "@/components/Reviews";
 import { Booking } from "@/components/Booking";
+import dynamic from "next/dynamic";
+
+const InfiniteImageField = dynamic(() =>
+  import("@/components/ui/infinite-image-field").then((m) => ({ default: m.InfiniteImageField })),
+  { ssr: true }
+);
 
 export default function HomePage() {
   return (

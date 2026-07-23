@@ -14,6 +14,24 @@ export const metadata: Metadata = {
   },
 };
 
+const itemListLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Room Types at Hotel Kleopatra",
+  description: "All 23 room types available at Hotel Kleopatra in Ulcinj, Montenegro.",
+  numberOfItems: 23,
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Comfort Double Room with Sea View" },
+    { "@type": "ListItem", position: 2, name: "Comfort Triple Room with Sea View" },
+    { "@type": "ListItem", position: 3, name: "Comfort Quadruple Room with Sea View" },
+    { "@type": "ListItem", position: 4, name: "Comfort Two-Bedroom Apartment with Balcony" },
+    { "@type": "ListItem", position: 5, name: "Standard Double Room with Balcony, Sea and Pool View" },
+    { "@type": "ListItem", position: 6, name: "Comfort Three-Bedroom Apartment with Balcony and Sea View" },
+    { "@type": "ListItem", position: 7, name: "Standard Triple Room with Balcony, Sea and Pool View" },
+    { "@type": "ListItem", position: 8, name: "Luxury Apartment" },
+  ],
+};
+
 const categories = [
   { name: "Double Rooms", desc: "Intimate and comfortable — ideal for couples seeking a sea-view escape.", count: "7 types" },
   { name: "Triple Rooms", desc: "Perfect for small families or three friends travelling together.", count: "3 types" },
@@ -24,6 +42,7 @@ const categories = [
 export default function RoomsPage() {
   return (
     <main id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListLd) }} />
       <div className="pt-28" />
 
       {/* Hero banner */}

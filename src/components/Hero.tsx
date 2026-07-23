@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { CalendarDays, Users, BedDouble, ArrowRight, ChevronDown, Star } from "lucide-react";
 
@@ -22,6 +22,12 @@ export function Hero() {
   const [checkOut, setCheckOut] = useState(todayISO(4));
   const [guests, setGuests] = useState("2 Adults");
   const [room, setRoom] = useState("Comfort Double Room");
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const t = setTimeout(() => videoRef.current?.play(), 2000);
+    return () => clearTimeout(t);
+  }, []);
 
   const handleCheck = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,10 +44,11 @@ export function Hero() {
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <video
-          autoPlay
+          ref={videoRef}
           muted
           loop
           playsInline
+          preload="none"
           poster="/images/hero.jpg"
           className="h-full w-full object-cover"
           style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform" }}
@@ -145,7 +152,7 @@ export function Hero() {
       {/* Scroll cue */}
       <a
         href="#intro"
-        aria-label="Scroll down"
+        aria-label="Discover"
         className="absolute bottom-7 left-1/2 z-10 -translate-x-1/2 text-white/80 transition hover:text-white"
       >
         <span className="flex flex-col items-center gap-2">

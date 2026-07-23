@@ -16,6 +16,29 @@ export const metadata: Metadata = {
   },
 };
 
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question", name: "How do I book a room at Hotel Kleopatra?",
+      acceptedAnswer: { "@type": "Answer", text: "You can book directly through our website for the best rate, or via Booking.com. Direct bookings include free cancellation up to 48 hours before arrival and a complimentary welcome drink." },
+    },
+    {
+      "@type": "Question", name: "What is the cancellation policy?",
+      acceptedAnswer: { "@type": "Answer", text: "Free cancellation is available up to 48 hours before your scheduled arrival. Late cancellations may incur a one-night charge." },
+    },
+    {
+      "@type": "Question", name: "Is free parking available?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes, free on-site parking is available for all hotel guests — no reservation needed. The parking area is secure and monitored." },
+    },
+    {
+      "@type": "Question", name: "Do you offer airport transfers?",
+      acceptedAnswer: { "@type": "Answer", text: "Yes, we can arrange airport transfers from Tivat, Podgorica or Dubrovnik airports upon request. Please contact us with your arrival details." },
+    },
+  ],
+};
+
 const stats = [
   { icon: Star, label: "Booking.com Score", value: "8.0 / 10" },
   { icon: ThumbsUp, label: "Would recommend", value: "94%" },
@@ -26,6 +49,7 @@ const stats = [
 export default function GuestsPage() {
   return (
     <main id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <div className="pt-28" />
       <section className="bg-cream py-24 md:py-32">
         <div className="container-lux text-center">

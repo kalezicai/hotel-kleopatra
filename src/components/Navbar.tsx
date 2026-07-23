@@ -44,7 +44,7 @@ export function Navbar() {
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${bg}`}>
       <nav className="container-lux flex items-center justify-between">
-        <Link href="/" aria-label="Hotel Kleopatra — home" className="shrink-0">
+        <Link href="/" className="shrink-0">
           <Logo variant={logoVariant} markSize={logoSize} />
         </Link>
 

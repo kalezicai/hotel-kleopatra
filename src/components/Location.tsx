@@ -1,5 +1,3 @@
-"use client";
-
 import { Reveal } from "./Reveal";
 import { attractions } from "@/lib/data";
 import { MapPin, Footprints, Compass } from "lucide-react";

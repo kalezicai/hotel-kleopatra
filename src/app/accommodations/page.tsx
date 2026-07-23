@@ -14,6 +14,45 @@ export const metadata: Metadata = {
   },
 };
 
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What room types are available at Hotel Kleopatra?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Hotel Kleopatra offers comfort double rooms, triple rooms, two-bedroom and three-bedroom apartments — all with sea views and private balconies. In total there are 23 room types across six categories.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do rooms have air conditioning and WiFi?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, all rooms include air conditioning, free WiFi, satellite TV, a fridge and an en-suite bathroom.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Is breakfast included in the room rate?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A fresh breakfast buffet is included with every stay at Hotel Kleopatra, served on the sea-view terrace.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What is the best rate guarantee when booking direct?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "When you book directly through our website, you get the best available rate with no booking fees, priority room selection, a complimentary welcome drink and direct concierge support.",
+      },
+    },
+  ],
+};
+
 const perks = [
   "Best rate guaranteed when booking direct",
   "Free cancellation up to 48 hours before arrival",
@@ -26,6 +65,7 @@ const perks = [
 export default function AccommodationsPage() {
   return (
     <main id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <div className="pt-28" />
       <Accommodations roomsLinkHref="/rooms" />
 

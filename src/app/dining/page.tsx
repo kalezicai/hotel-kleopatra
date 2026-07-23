@@ -15,6 +15,27 @@ export const metadata: Metadata = {
   },
 };
 
+const restaurantLd = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  name: "Hotel Kleopatra Restaurant",
+  description: "Traditional Montenegrin cuisine and Mediterranean flavours served on a sea-view terrace in Ulcinj, Montenegro.",
+  servesCuisine: ["Montenegrin", "Mediterranean", "Seafood", "European"],
+  priceRange: "€€",
+  telephone: "+382 6990 3844",
+  email: "info@hotelkleopatra.me",
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "07:30", closes: "10:00", description: "Breakfast" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "12:00", closes: "15:00", description: "Lunch" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "18:00", closes: "22:00", description: "Dinner" },
+  ],
+  parentOrganization: {
+    "@type": "Hotel",
+    name: "Hotel Kleopatra",
+    url: "https://www.hotelkleopatra.me",
+  },
+};
+
 const specials = [
   { name: "Fresh Grilled Fish", desc: "Daily catch from Ulcinj fishermen, grilled with olive oil and herbs.", emoji: "🐟" },
   { name: "Njeguški Steak", desc: "Traditional Montenegrin air-dried ham served with local cheese and olives.", emoji: "🥩" },
@@ -27,6 +48,7 @@ const specials = [
 export default function DiningPage() {
   return (
     <main id="main-content">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantLd) }} />
       <div className="pt-28" />
       <Restaurant />
 

@@ -81,8 +81,8 @@ export function Footer() {
                 className="w-full rounded-full border border-white/15 bg-white/5 py-3.5 pl-11 pr-4 font-sans text-sm text-white placeholder:text-white/35 outline-none transition focus:border-gold/60 focus:bg-white/10"
               />
             </div>
-            <button type="submit" className="btn-gold shrink-0 !px-5">
-              {done ? <Check size={16} /> : <Send size={16} />}
+            <button type="submit" aria-label="Subscribe to newsletter" className="btn-gold shrink-0 !px-5">
+              {done ? <Check size={18} /> : <Send size={16} />}
             </button>
           </form>
         </div>
@@ -104,16 +104,12 @@ export function Footer() {
               arrives as a stranger and leaves as a friend.
             </p>
             <div className="mt-5 flex gap-3">
-              {[InstagramIcon, FacebookIcon].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  aria-label="Social media"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all duration-500 hover:border-gold hover:bg-gold hover:text-white"
-                >
-                  <Icon size={16} />
-                </a>
-              ))}
+              <a href="https://www.instagram.com/hotelkleopatra/" target="_blank" rel="noreferrer" aria-label="Hotel Kleopatra on Instagram" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all duration-500 hover:border-gold hover:bg-gold hover:text-white">
+                <InstagramIcon size={16} />
+              </a>
+              <a href="https://www.facebook.com/hotelkleopatra" target="_blank" rel="noreferrer" aria-label="Hotel Kleopatra on Facebook" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-all duration-500 hover:border-gold hover:bg-gold hover:text-white">
+                <FacebookIcon size={16} />
+              </a>
             </div>
           </div>
 

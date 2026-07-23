@@ -7,14 +7,14 @@ import "./globals.css";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
   variable: "--font-playfair",
   display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",
@@ -33,6 +33,20 @@ const manrope = Manrope({
 });
 
 const siteUrl = "https://www.hotelkleopatra.me";
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Accommodations", item: `${siteUrl}/accommodations` },
+    { "@type": "ListItem", position: 3, name: "Rooms", item: `${siteUrl}/rooms` },
+    { "@type": "ListItem", position: 4, name: "Experience", item: `${siteUrl}/experience` },
+    { "@type": "ListItem", position: 5, name: "Dining", item: `${siteUrl}/dining` },
+    { "@type": "ListItem", position: 6, name: "Gallery", item: `${siteUrl}/gallery` },
+    { "@type": "ListItem", position: 7, name: "Location", item: `${siteUrl}/location` },
+    { "@type": "ListItem", position: 8, name: "Guest Reviews", item: `${siteUrl}/guests` },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -51,6 +65,19 @@ export const metadata: Metadata = {
     "rooms Ulcinj Old Town",
     "budget hotel Ulcinj Montenegro",
     "Kleopatra Apartments Ulcinj",
+    "Ulcinj hotel with pool",
+    "dog friendly hotel Ulcinj",
+    "hotels near Mala Plaza Ulcinj",
+    "Ulcinj accommodation sea view",
+    "Montenegro family-run hotel",
+    "Ulcinj Old Town hotels",
+    "Ada Bojana hotels",
+    "Velika Plaza accommodation",
+    "hotel with parking Ulcinj",
+    "bed and breakfast Ulcinj Montenegro",
+    "apartments Ulcinj near beach",
+    "best hotels in Ulcinj",
+    "Ulcinj Riviera hotel",
   ],
   authors: [{ name: "Hotel Kleopatra" }],
   creator: "Hotel Kleopatra",
@@ -165,11 +192,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="apple-touch-icon" href="/images/logo.png" />
         <link rel="preconnect" href="https://www.openstreetmap.org" />
         <link rel="dns-prefetch" href="https://www.openstreetmap.org" />
-        <link rel="preload" href="/videos/vidoup.mp4" as="video" type="video/mp4" fetchPriority="high" media="(min-width: 768px)" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" href="/images/hero.jpg" as="image" fetchPriority="high" />
+        <link rel="preload" href="/videos/vidoup.mp4" as="video" type="video/mp4" fetchPriority="low" media="(min-width: 768px)" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
         />
       </head>
       <body className="bg-ivory text-chocolate antialiased">
