@@ -17,13 +17,13 @@ const MAX_VISIBLE = 7;
 const HALF = 3;
 
 const FAN_POSITIONS = [
-  { rot: -18, scale: 0.82, x: -16, y: 5.0, zIndex: 1 },
-  { rot: -12, scale: 0.88, x: -10, y: 2.5, zIndex: 2 },
-  { rot: -6,  scale: 0.95, x: -5,  y: 0.8, zIndex: 3 },
-  { rot: 0,   scale: 1.0,  x: 0,   y: 0.0, zIndex: 10 },
-  { rot: 6,   scale: 0.95, x: 5,   y: 0.8, zIndex: 3 },
-  { rot: 12,  scale: 0.88, x: 10,  y: 2.5, zIndex: 2 },
-  { rot: 18,  scale: 0.82, x: 16,  y: 5.0, zIndex: 1 },
+  { rot: -21, scale: 0.7756, x: -30, y: 7.3, zIndex: 1 },
+  { rot: -14, scale: 0.8498, x: -22, y: 4.0, zIndex: 2 },
+  { rot: -7,  scale: 0.9346, x: -11, y: 1.3, zIndex: 3 },
+  { rot: 0,   scale: 1.0,    x: 0,   y: 0.0, zIndex: 10 },
+  { rot: 7,   scale: 0.9346, x: 11,  y: 1.3, zIndex: 3 },
+  { rot: 14,  scale: 0.8498, x: 22,  y: 4.0, zIndex: 2 },
+  { rot: 21,  scale: 0.7756, x: 30,  y: 7.3, zIndex: 1 },
 ];
 
 function getResponsiveMultiplier(width: number) {
@@ -53,10 +53,10 @@ function getSlotConfig(totalCards: number, slot: number) {
   const distance = totalCards > 1 ? (slot - center) / center : 0;
   const absDistance = Math.abs(distance);
   return {
-    rot: distance * 18,
-    scale: 1.0 - 0.18 * absDistance * absDistance,
-    x: distance * 16,
-    y: absDistance * absDistance * 5,
+    rot: distance * 21,
+    scale: 1.0 - 0.2244 * absDistance * absDistance,
+    x: distance * 30,
+    y: absDistance * absDistance * 7.3,
     zIndex: 10 - Math.abs(slot - center),
   };
 }
@@ -143,14 +143,8 @@ export default function SocialCards({ cards }: SocialCardsProps) {
           gsap.to(card, { ...target, duration: 1.2, ease: "elastic.out(1.05,.78)", delay: 0.2 + slot * 0.06, onComplete: onCardDone });
         } else if (!wasVisible) {
           const enterX = direction === "right" ? 40 : -40;
-          const finalZIndex = zIndex;
-          gsap.set(card, { x: `${enterX}rem`, y: `${y * hMult}rem`, rotation: direction === "right" ? 30 : -30, scale: 0.5, opacity: 0, zIndex: 20 });
-          gsap.to(card, {
-            x: target.x, y: target.y, rotation: target.rotation, scale, opacity: 1,
-            zIndex: 20,
-            duration: 0.6, ease: "power2.out",
-            onComplete: () => { gsap.set(card, { zIndex: finalZIndex }); onCardDone(); }
-          });
+          gsap.set(card, { x: `${enterX}rem`, y: `${y * hMult}rem`, rotation: direction === "right" ? 30 : -30, scale: 0.5, opacity: 0 });
+          gsap.to(card, { ...target, duration: 0.6, ease: "power2.out", onComplete: onCardDone });
         } else {
           gsap.to(card, { ...target, duration: 0.5, ease: "power2.out", onComplete: onCardDone });
         }
@@ -192,8 +186,8 @@ export default function SocialCards({ cards }: SocialCardsProps) {
           delay = distance * 0.02;
 
           if (slot === hoveredSlot) {
-            targetY -= 4 * hM;
-            targetScale *= 1.12;
+            targetY -= 2.5 * hM;
+            targetScale *= 1.08;
           } else {
             const normalized = centerSlot > 0 ? (slot - centerSlot) / centerSlot : 0;
             const pushStrength = 8 * (1 - Math.abs(normalized)) * (1 + 0.2 * Math.max(0, 3 - distance));
@@ -268,16 +262,16 @@ export default function SocialCards({ cards }: SocialCardsProps) {
               </div>
             );
             return card.linkUrl ? (
-              <a key={index} href={card.linkUrl} target={card.linkUrl.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer" className="fan-card block cursor-pointer w-28 h-40 sm:w-32 sm:h-48 md:w-40 md:h-60 lg:w-48 lg:h-72">{image}</a>
+              <a key={index} href={card.linkUrl} target={card.linkUrl.startsWith("http") ? "_blank" : "_self"} rel="noopener noreferrer" className="fan-card block cursor-pointer w-32 h-48 md:w-44 md:h-64 lg:w-52 lg:h-72">{image}</a>
             ) : (
-              <div key={index} className="fan-card w-28 h-40 sm:w-32 sm:h-48 md:w-40 md:h-60 lg:w-48 lg:h-72">{image}</div>
+              <div key={index} className="fan-card w-32 h-48 md:w-44 md:h-64 lg:w-52 lg:h-72">{image}</div>
             );
           })}
         </div>
       </div>
 
       {needsPagination && (
-        <div className="flex items-center justify-center gap-4 mt-10 md:mt-14 z-30">
+        <div className="flex items-center justify-center gap-4 mt-4 md:mt-6 z-30">
           <button className={`${ARROW_CLASSES} w-10 h-10 md:w-12 md:h-12`} onClick={() => cycle("left")} aria-label="Previous">
             {chevron("left")}
           </button>
