@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { usePathname } from "next/navigation";
@@ -17,35 +17,14 @@ const links = [
 ];
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [open]);
-
-  const bg = isHome && !scrolled && !open
-    ? "bg-transparent"
-    : "bg-ivory/85 shadow-[0_12px_40px_-28px_rgba(53,32,26,0.7)] backdrop-blur-xl";
-
-  const logoVariant = isHome && !scrolled && !open ? "light" : "dark";
-  const logoSize = isHome && !scrolled && !open ? 80 : 72;
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${bg}`}>
+    <header className="relative z-50 bg-ivory shadow-[0_12px_40px_-28px_rgba(53,32,26,0.7)]">
       <nav className="container-lux flex items-center justify-between">
         <Link href="/" className="shrink-0">
-          <Logo variant={logoVariant} markSize={logoSize} />
+          <Logo variant="dark" markSize={72} />
         </Link>
 
         <ul className="hidden items-center gap-9 lg:flex">
@@ -58,9 +37,7 @@ export function Navbar() {
                   className={`link-underline font-sans text-[0.82rem] font-medium tracking-wide transition-colors ${
                     isActive
                       ? "text-gold-deep"
-                      : isHome && !scrolled
-                        ? "text-white/90 hover:text-white"
-                        : "text-chocolate/80 hover:text-chocolate"
+                      : "text-chocolate/80 hover:text-chocolate"
                   }`}
                 >
                   {l.label}
@@ -79,11 +56,7 @@ export function Navbar() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
-          className={`flex h-11 w-11 items-center justify-center rounded-full lg:hidden ${
-            isHome && !scrolled && !open
-              ? "bg-white/20 text-white backdrop-blur"
-              : "bg-chocolate text-white"
-          }`}
+          className="flex h-11 w-11 items-center justify-center rounded-full bg-chocolate text-white lg:hidden"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>

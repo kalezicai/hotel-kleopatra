@@ -65,7 +65,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -left-24 top-1/3 h-72 w-72 rounded-full bg-gold/20 blur-3xl animate-float-slow" />
       <div className="pointer-events-none absolute right-10 top-24 h-40 w-40 rounded-full bg-sea/20 blur-3xl animate-float" />
 
-      <div className="container-lux relative z-10 pt-28 pb-16">
+      <div className="container-lux relative z-10 pt-8 pb-16">
         <div className="max-w-3xl">
           <div
             className="reveal is-visible flex items-center gap-2 text-white/85"
