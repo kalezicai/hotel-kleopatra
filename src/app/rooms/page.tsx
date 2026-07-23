@@ -14,11 +14,65 @@ export const metadata: Metadata = {
   },
 };
 
+const categories = [
+  { name: "Double Rooms", desc: "Intimate and comfortable — ideal for couples seeking a sea-view escape.", count: "7 types" },
+  { name: "Triple Rooms", desc: "Perfect for small families or three friends travelling together.", count: "3 types" },
+  { name: "Quadruple Rooms", desc: "Extra space and flexibility for groups of four.", count: "4 types" },
+  { name: "Apartments", desc: "Self-contained living with kitchenettes and separate bedrooms.", count: "9 types" },
+];
+
 export default function RoomsPage() {
   return (
     <main id="main-content">
       <div className="pt-28" />
+
+      {/* Hero banner */}
+      <section className="bg-cream py-24 md:py-32">
+        <div className="container-lux text-center">
+          <span className="eyebrow">Our rooms</span>
+          <h1 className="mt-4 font-display text-4xl leading-tight text-chocolate md:text-5xl">
+            23 ways to wake up to the{" "}
+            <span className="text-gradient-gold italic">Adriatic</span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl font-manrope text-chocolate/70">
+            From comfortable doubles to spacious three-bedroom apartments — every room at
+            Hotel Kleopatra is designed for rest, with sea views, cool sea breezes and
+            the gentle sound of the waves.
+          </p>
+        </div>
+      </section>
+
+      {/* Category overview */}
+      <section className="bg-ivory py-20 md:py-28">
+        <div className="container-lux">
+          <span className="eyebrow">Categories</span>
+          <h2 className="mt-4 font-display text-3xl leading-tight text-chocolate md:text-4xl">
+            Find your <span className="text-gradient-gold italic">perfect fit</span>
+          </h2>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {categories.map((c) => (
+              <div key={c.name} className="rounded-2xl border border-chocolate/8 bg-white px-6 py-8 shadow-sm">
+                <div className="font-display text-xl text-chocolate">{c.name}</div>
+                <div className="mt-1 font-sans text-xs uppercase tracking-widest text-gold-deep">{c.count}</div>
+                <p className="mt-3 font-manrope text-sm leading-relaxed text-chocolate/65">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* All rooms */}
       <AllRooms />
+
+      {/* Info note */}
+      <section className="bg-cream py-16">
+        <div className="container-lux text-center">
+          <p className="font-cormorant text-xl italic text-chocolate/60">
+            All rooms include air conditioning, free WiFi, satellite TV, a fridge and
+            an en-suite bathroom. Sea-view rooms and balconies are subject to availability.
+          </p>
+        </div>
+      </section>
     </main>
   );
 }

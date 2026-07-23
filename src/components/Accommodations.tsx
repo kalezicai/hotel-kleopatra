@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Reveal } from "./Reveal";
 import { rooms } from "@/lib/data";
 import { Users, Maximize2, Waves, DoorOpen, ArrowRight, Check } from "lucide-react";
@@ -10,7 +11,7 @@ function dispatchRoom(roomName: string) {
   document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
 }
 
-export function Accommodations() {
+export function Accommodations({ roomsLinkHref }: { roomsLinkHref?: string }) {
   return (
     <section id="accommodations" className="relative bg-cream py-24 md:py-32">
       <div className="container-lux">
@@ -96,13 +97,23 @@ export function Accommodations() {
           <p className="font-cormorant text-lg italic text-chocolate/60">
             Best rate guaranteed when you book directly — no platform fees, our full attention.
           </p>
-          <button
-            onClick={() => document.getElementById("all-rooms")?.scrollIntoView({ behavior: "smooth" })}
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-chocolate/20 px-7 py-3.5 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-chocolate transition-all duration-500 hover:border-gold-deep hover:bg-gold-deep hover:text-white"
-          >
-            Explore all 23 room types
-            <ArrowRight size={14} />
-          </button>
+          {roomsLinkHref ? (
+            <Link
+              href={roomsLinkHref}
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-chocolate/20 px-7 py-3.5 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-chocolate transition-all duration-500 hover:border-gold-deep hover:bg-gold-deep hover:text-white"
+            >
+              Explore all 23 room types
+              <ArrowRight size={14} />
+            </Link>
+          ) : (
+            <button
+              onClick={() => document.getElementById("all-rooms")?.scrollIntoView({ behavior: "smooth" })}
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-chocolate/20 px-7 py-3.5 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-chocolate transition-all duration-500 hover:border-gold-deep hover:bg-gold-deep hover:text-white"
+            >
+              Explore all 23 room types
+              <ArrowRight size={14} />
+            </button>
+          )}
         </Reveal>
       </div>
     </section>
