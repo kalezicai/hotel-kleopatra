@@ -11,6 +11,17 @@ import { Location } from "../components/Location";
 import { Reviews } from "../components/Reviews";
 import { Booking } from "../components/Booking";
 
+const img = (name: string) => `/images/${name.replace(/\.jpg$/, ".webp")}`;
+
+const galleryImages = [
+  img("h_kleopatra_1720179402_3405434106756331954_3594665146.webp"),
+  img("h_kleopatra_1690136113_3153412732354361225_3594665146.webp"),
+  img("h_kleopatra_1784646699_3946224164977439346_3594665146.webp"),
+  img("h_kleopatra_1688587883_3140425240852529702_3594665146.webp"),
+  img("h_kleopatra_1753613379_3685898640275418367_3594665146.webp"),
+  img("h_kleopatra_1784541454_3945341474472267267_3594665146.webp"),
+];
+
 
 ---
 
@@ -46,11 +57,19 @@ import { Booking } from "../components/Booking";
           </p>
         </div>
       </div>
-      <div class="mt-12 grid grid-cols-2 gap-2 px-4 sm:grid-cols-3 md:grid-cols-4 md:gap-3 md:px-8">
-        <img src="/images/h_kleopatra_1690136113_3153412732346071395_3594665146.webp" alt="Sunlit room with sea view" class="h-48 w-full rounded-xl object-cover sm:h-52 md:h-64" loading="lazy" decoding="async" />
-        <img src="/images/h_kleopatra_1720179402_3405434106496183801_3594665146.webp" alt="Hotel room with balcony" class="h-48 w-full rounded-xl object-cover sm:h-52 md:h-64" loading="lazy" decoding="async" />
-        <img src="/images/h_kleopatra_1688387618_3138745297865615286_3594665146.webp" alt="Outdoor pool" class="h-48 w-full rounded-xl object-cover sm:h-52 md:h-64" loading="lazy" decoding="async" />
-        <img src="/images/h_kleopatra_1688587883_3140425240852529702_3594665146.webp" alt="Hotel exterior" class="h-48 w-full rounded-xl object-cover sm:h-52 md:h-64" loading="lazy" decoding="async" />
+
+      <div class="mt-12 flex h-[300px] w-full max-w-6xl gap-2 overflow-x-auto px-4 sm:mx-auto sm:px-6 md:h-[400px]">
+        {galleryImages.map((src, idx) => (
+          <div class="group relative w-14 flex-shrink-0 overflow-hidden rounded-2xl transition-all duration-700 hover:w-full sm:w-20 md:w-24">
+            <img
+              class="absolute inset-0 h-full w-full object-cover object-center"
+              src={src}
+              alt={`Hotel Kleopatra gallery image ${idx + 1}`}
+              loading={idx < 2 ? "eager" : "lazy"}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-chocolate/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+          </div>
+        ))}
       </div>
     </section>
 
