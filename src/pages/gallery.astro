@@ -1,21 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Camera } from "lucide-react";
+import { InfiniteImageField } from "../components/ui/infinite-image-field";
 
 const title = "Gallery";
 const description =
   "Browse the Hotel Kleopatra photo gallery — sea views, pool, rooms, restaurant and the beauty of Ulcinj, Montenegro.";
-
-const img = (name: string) => `/images/${name.replace(/\.jpg$/, ".webp")}`;
-
-const galleryImages = [
-  img("h_kleopatra_1720179402_3405434106756331954_3594665146.webp"),
-  img("h_kleopatra_1690136113_3153412732354361225_3594665146.webp"),
-  img("h_kleopatra_1784646699_3946224164977439346_3594665146.webp"),
-  img("h_kleopatra_1688587883_3140425240852529702_3594665146.webp"),
-  img("h_kleopatra_1753613379_3685898640275418367_3594665146.webp"),
-  img("h_kleopatra_1784541454_3945341474472267267_3594665146.webp"),
-];
 
 const highlights = [
   { label: "Pool & Terrace", desc: "Freshwater pool overlooking the Adriatic with sun loungers and panoramic views." },
@@ -40,22 +30,8 @@ const highlights = [
           </p>
         </div>
       </div>
-
-      <!-- Expanding cards gallery -->
-      <div class="mt-12 flex h-[300px] w-full max-w-6xl gap-2 overflow-x-auto px-4 sm:mx-auto sm:px-6 md:h-[400px]">
-        {galleryImages.map((src, idx) => (
-          <div
-            class="group relative w-14 flex-shrink-0 overflow-hidden rounded-2xl transition-all duration-700 hover:w-full sm:w-20 md:w-24"
-          >
-            <img
-              class="absolute inset-0 h-full w-full object-cover object-center"
-              src={src}
-              alt={`Hotel Kleopatra gallery image ${idx + 1}`}
-              loading={idx < 2 ? "eager" : "lazy"}
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-chocolate/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          </div>
-        ))}
+      <div class="mt-12 h-[50vh] w-full overflow-hidden md:h-[80vh]">
+        <InfiniteImageField class="h-full w-full" borderRadius={16} client:visible />
       </div>
     </section>
 
