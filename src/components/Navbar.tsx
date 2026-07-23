@@ -28,7 +28,7 @@ export function Navbar() {
   const logoVariant = isHome ? "light" : "dark";
 
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 ${bg}`}>
+    <header className={`absolute inset-x-0 top-0 z-50 ${bg}`}>
       <nav className="container-lux flex items-center justify-between">
         <Link href="/" className="shrink-0">
           <Logo variant={logoVariant} markSize={72} />
