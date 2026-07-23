@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Reveal } from "./Reveal";
 const img = (name: string) => `/images/${name.replace(/\.jpg$/, ".webp")}`;
-import { Quote } from "lucide-react";
+
 
 export function About() {
   return (
@@ -15,7 +15,7 @@ export function About() {
               alt="Hotel Kleopatra pool and sun loungers overlooking the Adriatic"
               fill
               sizes="(max-width: 1024px) 90vw, 45vw"
-              className="object-cover transition-transform duration-[1.4s] hover:scale-105"
+              className="scale-[1.3] object-cover transition-transform duration-[1.4s] hover:scale-[1.45]"
             />
           </div>
           {/* Floating secondary image */}
@@ -29,13 +29,6 @@ export function About() {
                 className="object-cover"
               />
             </div>
-          </div>
-          {/* Floating quote chip */}
-          <div className="glass absolute -left-3 top-8 hidden max-w-[14rem] rounded-2xl p-4 shadow-xl md:block animate-float-slow">
-            <Quote size={18} className="text-gold" />
-            <p className="mt-1 font-cormorant text-base italic leading-snug text-chocolate/80">
-              “A home above the sea, run by a family who remembers your name.”
-            </p>
           </div>
         </Reveal>
 
