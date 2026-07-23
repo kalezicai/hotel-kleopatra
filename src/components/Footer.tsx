@@ -33,12 +33,7 @@ const quickLinks = [
   { label: "Guest Reviews", href: "/guests" },
 ];
 
-const policies = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms of Stay", href: "#" },
-  { label: "Cancellation", href: "#" },
-  { label: "Sustainability", href: "#" },
-];
+const policies: { label: string; href: string }[] = [];
 
 export function Footer() {
   const [email, setEmail] = useState("");

@@ -50,7 +50,7 @@ export function Hero() {
           playsInline
           autoPlay
           preload="auto"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
         >
           <source src="/videos/vidoup-mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
@@ -108,7 +108,7 @@ export function Hero() {
         {/* Booking widget */}
         <form
           onSubmit={handleCheck}
-          className="glass mt-12 grid max-w-5xl grid-cols-1 gap-2 rounded-3xl p-3 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.6)] sm:grid-cols-2 lg:grid-cols-5 lg:items-end"
+          className="glass mt-12 hidden max-w-5xl gap-2 rounded-3xl p-3 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.6)] lg:grid lg:grid-cols-5 lg:items-end"
         >
           <Field icon={<CalendarDays size={16} />} label="Arrival">
             <input
@@ -166,6 +166,13 @@ export function Hero() {
       <style>{`
         @media (prefers-reduced-motion: reduce) {
           video { animation: none !important; }
+        }
+        @media (max-width: 768px) {
+          video { animation: ken-burns-mobile 25s linear infinite alternate !important; }
+        }
+        @keyframes ken-burns-mobile {
+          0% { transform: scale(1) translate(0, 0); }
+          100% { transform: scale(1.02) translate(0, 0); }
         }
         .lux-input {
           width: 100%;
