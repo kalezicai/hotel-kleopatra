@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { CalendarDays, Users, BedDouble, ArrowRight, ChevronDown, Star } from "lucide-react";
 
@@ -23,9 +23,17 @@ export function Hero() {
   const [guests, setGuests] = useState("2 Adults");
   const [room, setRoom] = useState("Comfort Double Room");
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => videoRef.current?.play(), 2000);
+    const t = setTimeout(async () => {
+      try {
+        await videoRef.current?.play();
+        setVideoReady(true);
+      } catch {
+        /* autoplay blocked — keep poster visible */
+      }
+    }, 2000);
     return () => clearTimeout(t);
   }, []);
 
@@ -41,17 +49,24 @@ export function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-[100svh] items-center overflow-hidden">
-      {/* Background */}
+      {/* Background: static image always visible, video fades in */}
       <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/hero.jpg"
+          alt=""
+          fill
+          priority
+          className={`object-cover transition-opacity duration-1000 ${videoReady ? "opacity-0" : "opacity-100"}`}
+          style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform" }}
+        />
         <video
           ref={videoRef}
           muted
           loop
           playsInline
-          preload="none"
-          poster="/images/hero.jpg"
-          className="h-full w-full object-cover"
-          style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform" }}
+          preload="auto"
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${videoReady ? "opacity-100" : "opacity-0"}`}
+          style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
         >
           <source src="/videos/vidoup.mp4" type="video/mp4" />
         </video>

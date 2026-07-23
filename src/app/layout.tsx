@@ -192,7 +192,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <link rel="apple-touch-icon" href="/images/logo.png" />
         <link rel="preconnect" href="https://www.openstreetmap.org" />
         <link rel="dns-prefetch" href="https://www.openstreetmap.org" />
-        <link rel="preload" href="/images/hero.jpg" as="image" fetchPriority="high" />
         <link rel="preload" href="/videos/vidoup.mp4" as="video" type="video/mp4" fetchPriority="low" media="(min-width: 768px)" />
         <script
           type="application/ld+json"
