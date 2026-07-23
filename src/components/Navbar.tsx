@@ -19,12 +19,19 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  const bg = isHome
+    ? "bg-transparent"
+    : "bg-ivory/85 shadow-[0_12px_40px_-28px_rgba(53,32,26,0.7)] backdrop-blur-xl";
+
+  const logoVariant = isHome ? "light" : "dark";
 
   return (
-    <header className="relative z-50 bg-ivory shadow-[0_12px_40px_-28px_rgba(53,32,26,0.7)]">
+    <header className={`fixed inset-x-0 top-0 z-50 ${bg}`}>
       <nav className="container-lux flex items-center justify-between">
         <Link href="/" className="shrink-0">
-          <Logo variant="dark" markSize={72} />
+          <Logo variant={logoVariant} markSize={72} />
         </Link>
 
         <ul className="hidden items-center gap-9 lg:flex">
@@ -37,7 +44,9 @@ export function Navbar() {
                   className={`link-underline font-sans text-[0.82rem] font-medium tracking-wide transition-colors ${
                     isActive
                       ? "text-gold-deep"
-                      : "text-chocolate/80 hover:text-chocolate"
+                      : isHome
+                        ? "text-white/85 hover:text-white"
+                        : "text-chocolate/80 hover:text-chocolate"
                   }`}
                 >
                   {l.label}
@@ -56,7 +65,11 @@ export function Navbar() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-chocolate text-white lg:hidden"
+          className={`flex h-11 w-11 items-center justify-center rounded-full lg:hidden ${
+            isHome
+              ? "bg-white/20 text-white backdrop-blur"
+              : "bg-chocolate text-white"
+          }`}
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
