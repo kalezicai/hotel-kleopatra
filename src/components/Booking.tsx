@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Reveal } from "./Reveal";
-const img = (name: string) => `/images/${name}`;
+const img = (name: string) => `/images/${name.replace(/\.jpg$/, ".webp")}`;
 import { CalendarDays, Users, BedDouble, User, Mail, Phone, MessageSquare, Check, Loader2, ArrowRight } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";

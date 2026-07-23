@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "./Reveal";
-const img = (name: string) => `/images/${name}`;
+const img = (name: string) => `/images/${name.replace(/\.jpg$/, ".webp")}`;
 import { Leaf, ChefHat, Wine, Sunrise, UtensilsCrossed } from "lucide-react";
 
 const pillars = [
@@ -70,7 +70,7 @@ export function Restaurant() {
             <div className="mt-10 flex flex-col gap-4">
               <div className="relative aspect-square overflow-hidden rounded-[1.75rem] shadow-2xl">
                 <Image
-                  src="/images/rooms/General/img_473728764.jpg"
+                  src="/images/rooms/General/img_473728764.webp"
                   alt="Dining at Hotel Kleopatra"
                   fill
                   sizes="(max-width: 1024px) 45vw, 22vw"
@@ -79,7 +79,7 @@ export function Restaurant() {
               </div>
               <div className="relative aspect-[4/5] overflow-hidden rounded-[1.75rem] shadow-2xl">
                 <Image
-                  src="/images/rooms/General/img_475501701.jpg"
+                  src="/images/rooms/General/img_475501701.webp"
                   alt="Hotel Kleopatra ambiance"
                   fill
                   sizes="(max-width: 1024px) 45vw, 22vw"

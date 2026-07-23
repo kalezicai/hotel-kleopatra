@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "./Reveal";
-const img = (name: string) => `/images/${name}`;
+const img = (name: string) => `/images/${name.replace(/\.jpg$/, ".webp")}`;
 import { Quote } from "lucide-react";
 
 export function About() {

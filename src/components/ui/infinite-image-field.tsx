@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import { useCallback, useEffect, useRef } from "react";
 
-const img = (name: string) => `/images/rooms/General/${name}`;
+const img = (name: string) => `/images/rooms/General/${name.replace(/\.jpg$/, ".webp")}`;
 
 export const INFINITE_IMAGE_FIELD_IMAGES: string[] = [
   img("img_475500784.jpg"),

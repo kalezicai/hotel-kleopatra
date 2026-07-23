@@ -52,7 +52,7 @@ export function Hero() {
       {/* Background: static image always visible, video fades in */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/hero.jpg"
+          src="/images/hero.webp"
           alt=""
           fill
           priority
