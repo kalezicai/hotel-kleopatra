@@ -122,7 +122,7 @@ export function AllRooms() {
                       )}
                     </div>
 
-                    <p className="mt-3 font-manrope text-xs text-chocolate/50">
+                    <p className="mt-3 font-manrope text-xs text-muted">
                       {room.reviewCount} review{room.reviewCount !== 1 ? "s" : ""}
                     </p>
 
@@ -159,7 +159,7 @@ export function AllRooms() {
         </div>
 
         {filtered.length === 0 && (
-          <p className="py-20 text-center font-manrope text-chocolate/50">
+          <p className="py-20 text-center font-manrope text-muted">
             No rooms found in this category.
           </p>
         )}

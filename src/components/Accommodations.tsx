@@ -73,7 +73,7 @@ export function Accommodations({ roomsLinkHref }: { roomsLinkHref?: string }) {
                     {room.features.map((f) => (
                       <li
                         key={f}
-                        className="flex items-center gap-1 font-sans text-[0.68rem] text-chocolate/55"
+                        className="flex items-center gap-1 font-sans text-[0.68rem] text-muted"
                       >
                         <Check size={11} className="text-olive" /> {f}
                       </li>

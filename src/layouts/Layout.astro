@@ -1,0 +1,216 @@
+---
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
+
+const siteUrl = "https://www.hotelkleopatra.me";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title = "Hotel Kleopatra · Family-Run Hotel in Ulcinj, Montenegro",
+  description = "Hotel Kleopatra is a family-run 3-star hotel overlooking the Adriatic in Ulcinj, Montenegro. Enjoy sea views, an outdoor pool, free parking and genuine Montenegrin hospitality — minutes from the Old Town and beach. Book direct for the best rate.",
+  ogImage = "/images/hero.jpg",
+  canonical = siteUrl,
+} = Astro.props;
+
+const keywords = [
+  "Hotel Kleopatra Ulcinj", "family hotel Ulcinj", "hotel Montenegro",
+  "sea view hotel Ulcinj", "Adriatic coast hotel", "rooms Ulcinj Old Town",
+  "budget hotel Ulcinj Montenegro", "Kleopatra Apartments Ulcinj",
+  "Ulcinj hotel with pool", "dog friendly hotel Ulcinj",
+  "hotels near Mala Plaza Ulcinj", "Ulcinj accommodation sea view",
+  "Montenegro family-run hotel", "Ulcinj Old Town hotels",
+  "Ada Bojana hotels", "Velika Plaza accommodation",
+  "hotel with parking Ulcinj", "bed and breakfast Ulcinj Montenegro",
+  "apartments Ulcinj near beach", "best hotels in Ulcinj",
+  "Ulcinj Riviera hotel",
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "@id": `${siteUrl}/#hotel`,
+  name: "Hotel Kleopatra",
+  description: "Family-run 3-star hotel above the Adriatic in Ulcinj, Montenegro, offering sea-view rooms, an outdoor pool and warm family hospitality since 2000.",
+  url: siteUrl,
+  image: `${siteUrl}${ogImage}`,
+  priceRange: "€€",
+  starRating: { "@type": "Rating", ratingValue: "3" },
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "8.0", reviewCount: "178", bestRating: "10", worstRating: "1" },
+  address: { "@type": "PostalAddress", streetAddress: "Pinjesh BB", addressLocality: "Ulcinj", postalCode: "85360", addressCountry: "ME" },
+  geo: { "@type": "GeoCoordinates", latitude: 41.92487, longitude: 19.21354 },
+  telephone: "+382 6990 3844",
+  email: "info@hotelkleopatra.me",
+  sameAs: ["https://www.instagram.com/hotelkleopatra/", "https://www.facebook.com/hotelkleopatra", "https://www.booking.com/hotel/me/kleopatra.html"],
+  amenityFeature: ["Outdoor Pool", "Restaurant", "Bar", "Breakfast Buffet", "Sea View", "Free WiFi", "Free Parking", "Air Conditioning", "Airport Shuttle", "Family Rooms"],
+  checkinTime: "13:00",
+  checkoutTime: "11:00",
+};
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+    { "@type": "ListItem", position: 2, name: "Accommodations", item: `${siteUrl}/accommodations` },
+    { "@type": "ListItem", position: 3, name: "Rooms", item: `${siteUrl}/rooms` },
+    { "@type": "ListItem", position: 4, name: "Experience", item: `${siteUrl}/experience` },
+    { "@type": "ListItem", position: 5, name: "Dining", item: `${siteUrl}/dining` },
+    { "@type": "ListItem", position: 6, name: "Gallery", item: `${siteUrl}/gallery` },
+    { "@type": "ListItem", position: 7, name: "Location", item: `${siteUrl}/location` },
+    { "@type": "ListItem", position: 8, name: "Guest Reviews", item: `${siteUrl}/guests` },
+  ],
+};
+
+const ogTitle = title.includes("·") ? title : `${title} · Hotel Kleopatra`;
+const fullDescription = description;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={fullDescription} />
+    <meta name="keywords" content={keywords.join(", ")} />
+    <meta name="author" content="Hotel Kleopatra" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Hotel Kleopatra" />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={fullDescription} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:image:width" content="1600" />
+    <meta property="og:image:height" content="900" />
+    <meta property="og:image:alt" content="Hotel Kleopatra pool overlooking the Adriatic at golden hour" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={fullDescription} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="category" content="travel" />
+
+    <link rel="icon" href="/images/logo.png" sizes="any" />
+    <link rel="apple-touch-icon" href="/images/logo.png" />
+    <link rel="preload" href="/images/hero.jpg" as="image" fetchpriority="high" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://www.openstreetmap.org" />
+    <link rel="dns-prefetch" href="https://www.openstreetmap.org" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+
+    <style is:global>
+      @import "tailwindcss";
+
+      @theme {
+        --color-sand: #e9d8b6;
+        --color-sand-soft: #f1e6cd;
+        --color-gold: #d6a75d;
+        --color-gold-deep: #8a6530;
+        --color-ivory: #faf7f2;
+        --color-cream: #f5f1ea;
+        --color-chocolate: #35201a;
+        --color-cocoa: #4b2a20;
+        --color-sea: #3a88c9;
+        --color-sea-deep: #2b6c9e;
+        --color-olive: #7b8a5b;
+        --color-muted: #6b5754;
+
+        --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+        --font-cormorant: "Cormorant Garamond", Georgia, serif;
+        --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+        --font-manrope: Manrope, ui-sans-serif, system-ui, sans-serif;
+
+        --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+
+        --animate-float: float 7s ease-in-out infinite;
+        --animate-float-slow: float 11s ease-in-out infinite;
+        --animate-shimmer: shimmer 2.4s linear infinite;
+        --animate-marquee: marquee 38s linear infinite;
+        --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+      }
+
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+      @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+      @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      @keyframes pulse-soft { 0%, 100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+      @keyframes ken-burns { 0% { transform: scale(1) translate(0, 0); } 100% { transform: scale(1.08) translate(-1%, -1%); } }
+
+      @layer base {
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
+        body {
+          font-family: var(--font-manrope); background-color: var(--color-ivory);
+          color: var(--color-chocolate); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden;
+        }
+        ::selection { background: var(--color-gold); color: #fff; }
+        h1, h2, h3, h4 { font-weight: 500; }
+        ::-webkit-scrollbar { width: 11px; }
+        ::-webkit-scrollbar-track { background: var(--color-cream); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--color-gold), var(--color-gold-deep)); border-radius: 99px; border: 3px solid var(--color-cream); }
+      }
+
+      @layer components {
+        .container-lux { width: 100%; margin-inline: auto; padding-inline: 1.5rem; max-width: 80rem; }
+        @media (min-width: 640px) { .container-lux { padding-inline: 2rem; } }
+        @media (min-width: 1024px) { .container-lux { padding-inline: 3rem; } }
+
+        .btn-gold {
+          display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem;
+          border-radius: 9999px; padding: 0.875rem 2rem; font-size: 0.8rem; font-weight: 600;
+          background: linear-gradient(135deg, #d6a75d, #b9873d); color: #fff; cursor: pointer;
+          transition: all 0.4s var(--ease-lux); text-transform: uppercase; letter-spacing: 0.08em; border: none; font-family: inherit;
+        }
+        .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 12px 35px -8px rgba(214, 167, 93, 0.5); }
+
+        .btn-ghost {
+          display: inline-flex; align-items: center; justify-content: center; gap: 0.375rem;
+          border-radius: 9999px; padding: 0.8125rem 2rem; font-size: 0.8rem; font-weight: 600;
+          background: transparent; cursor: pointer; transition: all 0.4s var(--ease-lux);
+          text-transform: uppercase; letter-spacing: 0.08em; border: 1.5px solid; font-family: inherit;
+        }
+
+        .text-gradient-gold {
+          background: linear-gradient(135deg, #d6a75d, #b9873d, #d6a75d);
+          -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .glass {
+          background: rgba(250, 247, 242, 0.72); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.45);
+        }
+
+        .link-underline {
+          position: relative; text-decoration: none;
+        }
+        .link-underline::after {
+          content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 1px;
+          background: currentColor; transition: width 0.35s var(--ease-lux);
+        }
+        .link-underline:hover::after { width: 100%; }
+
+        .text-balance { text-wrap: balance; }
+        @media (prefers-reduced-motion: reduce) {
+          video { animation: none !important; }
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-ivory text-chocolate antialiased">
+    <Navbar client:load />
+    <slot />
+    <Footer client:load />
+  </body>
+</html>

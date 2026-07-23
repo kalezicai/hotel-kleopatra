@@ -213,7 +213,7 @@ function Field({
 }) {
   return (
     <label className="relative block px-3 pt-1">
-      <span className="mb-1.5 block font-sans text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-chocolate/55">
+      <span className="mb-1.5 block font-sans text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-muted">
         {label}
       </span>
       <span className="pointer-events-none absolute bottom-3 left-5 text-gold-deep">{icon}</span>

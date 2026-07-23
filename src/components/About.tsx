@@ -79,7 +79,7 @@ export function About() {
               ].map((s) => (
                 <div key={s.v}>
                   <div className="font-display text-2xl text-gold-deep">{s.k}</div>
-                  <div className="font-sans text-xs uppercase tracking-[0.18em] text-chocolate/55">
+                  <div className="font-sans text-xs uppercase tracking-[0.18em] text-muted">
                     {s.v}
                   </div>
                 </div>

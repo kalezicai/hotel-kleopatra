@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Camera } from "lucide-react";
+import { InfiniteImageField } from "../components/ui/infinite-image-field";
+
+const title = "Gallery";
+const description =
+  "Browse the Hotel Kleopatra photo gallery — sea views, pool, rooms, restaurant and the beauty of Ulcinj, Montenegro.";
+
+const highlights = [
+  { label: "Pool & Terrace", desc: "Freshwater pool overlooking the Adriatic with sun loungers and panoramic views." },
+  { label: "Sea-View Rooms", desc: "Comfortable interiors flooded with natural light and cool sea breezes." },
+  { label: "Restaurant", desc: "Al fresco dining on the terrace — string lights, sea air and home cooking." },
+  { label: "Surroundings", desc: "Ulcinj Old Town, Velika Plaza beach and the Bojana river delta." },
+];
+---
+
+<Layout title={title} description={description}>
+  <main id="main-content">
+    <div class="pt-28" />
+    <section class="bg-cream py-24 md:py-32">
+      <div class="container-lux">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="eyebrow">Gallery</span>
+          <h1 class="mt-4 font-display text-4xl leading-tight text-chocolate md:text-5xl">
+            Moments by the <span class="text-gradient-gold italic">Adriatic</span>
+          </h1>
+          <p class="mt-5 font-manrope text-chocolate/70">
+            A glimpse of the light, the water and the quiet luxury that awaits.
+          </p>
+        </div>
+      </div>
+      <div class="mt-12 h-[80vh] w-full overflow-hidden">
+        <InfiniteImageField class="h-full w-full" borderRadius={16} client:visible />
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="bg-ivory py-20 md:py-28">
+      <div class="container-lux">
+        <span class="eyebrow">What you will see</span>
+        <h2 class="mt-4 font-display text-3xl leading-tight text-chocolate md:text-4xl">
+          A tour of the <span class="text-gradient-gold italic">property</span>
+        </h2>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {highlights.map((h) => (
+            <div class="rounded-2xl border border-chocolate/8 bg-white px-6 py-8 shadow-sm">
+              <Camera size={22} class="text-gold-deep" />
+              <div class="mt-4 font-display text-lg text-chocolate">{h.label}</div>
+              <p class="mt-2 font-manrope text-sm leading-relaxed text-chocolate/65">{h.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

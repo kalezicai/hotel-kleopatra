@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Hero } from "../components/Hero";
+import { About } from "../components/About";
+import { Stats } from "../components/Stats";
+import { Reveal } from "../components/Reveal";
+import { Accommodations } from "../components/Accommodations";
+import { Amenities } from "../components/Amenities";
+import { Restaurant } from "../components/Restaurant";
+import { Location } from "../components/Location";
+import { Reviews } from "../components/Reviews";
+import { Booking } from "../components/Booking";
+
+
+---
+
+<Layout>
+  <main id="main-content">
+    <Hero client:load />
+
+    <Reveal client:visible>
+      <About />
+    </Reveal>
+
+    <Reveal client:visible>
+      <Stats />
+    </Reveal>
+
+    <Reveal client:visible>
+      <Accommodations />
+    </Reveal>
+
+    <Reveal client:visible>
+      <Amenities />
+    </Reveal>
+
+    <section id="gallery" class="relative bg-cream py-24 md:py-32">
+      <div class="container-lux">
+        <div class="mx-auto max-w-2xl text-center">
+          <span class="eyebrow">Gallery</span>
+          <h2 class="mt-4 font-display text-4xl leading-tight text-chocolate md:text-5xl">
+            Moments by the <span class="text-gradient-gold italic">Adriatic</span>
+          </h2>
+          <p class="mt-5 font-manrope text-chocolate/70">
+            A glimpse of the light, the water and the quiet luxury that awaits.
+          </p>
+        </div>
+      </div>
+      <div class="mt-12 grid grid-cols-2 gap-3 px-4 sm:grid-cols-3 md:grid-cols-4 md:px-8">
+        <img src="/images/h_kleopatra_1690136113_3153412732346071395_3594665146.jpg" alt="Sunlit room with sea view" class="h-64 w-full rounded-xl object-cover" />
+        <img src="/images/h_kleopatra_1720179402_3405434106496183801_3594665146.jpg" alt="Hotel room with balcony" class="h-64 w-full rounded-xl object-cover" />
+        <img src="/images/h_kleopatra_1688387618_3138745297865615286_3594665146.jpg" alt="Outdoor pool" class="h-64 w-full rounded-xl object-cover" />
+        <img src="/images/h_kleopatra_1688587883_3140425240852529702_3594665146.jpg" alt="Hotel exterior" class="h-64 w-full rounded-xl object-cover" />
+      </div>
+    </section>
+
+    <Reveal client:visible>
+      <Restaurant />
+    </Reveal>
+
+    <Reveal client:visible>
+      <Location />
+    </Reveal>
+
+    <Reveal client:visible>
+      <Reviews />
+    </Reveal>
+
+    <Reveal client:visible>
+      <Booking />
+    </Reveal>
+
+    <div id="booking" />
+  </main>
+</Layout>

@@ -52,7 +52,7 @@ export function Location() {
                           {a.distance}
                         </span>
                       </div>
-                      <p className="mt-1 flex items-center gap-1.5 font-sans text-[0.7rem] uppercase tracking-wide text-chocolate/50">
+                      <p className="mt-1 flex items-center gap-1.5 font-sans text-[0.7rem] uppercase tracking-wide text-muted">
                         <Footprints size={12} /> {a.minutes} · {a.type}
                       </p>
                       <p className="mt-1.5 font-manrope text-sm leading-snug text-chocolate/65">

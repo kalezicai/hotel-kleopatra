@@ -121,7 +121,7 @@ export function Booking() {
             ) : (
               <form onSubmit={onSubmit} className="space-y-4">
                 <h3 className="font-display text-2xl text-chocolate">Request your stay</h3>
-                <p className="-mt-2 font-sans text-xs text-chocolate/55">
+                <p className="-mt-2 font-sans text-xs text-muted">
                   Tell us your dates — we&apos;ll confirm availability personally.
                 </p>
 
@@ -208,7 +208,7 @@ function Input({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block font-sans text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-chocolate/55">
+      <span className="mb-1.5 block font-sans text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-muted">
         {label}
       </span>
       <span className="relative block">
