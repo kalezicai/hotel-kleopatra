@@ -5,9 +5,12 @@ import { Reveal } from "./Reveal";
 import { stats } from "@/lib/data";
 
 function useCountUp(target: number, decimals: number, run: boolean, duration = 1800) {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(target);
+  const started = useRef(false);
   useEffect(() => {
-    if (!run) return;
+    if (!run || started.current) return;
+    started.current = true;
+    setValue(0);
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {

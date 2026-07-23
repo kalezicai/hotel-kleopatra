@@ -53,6 +53,7 @@ export function Hero() {
           className="absolute inset-0 h-full w-full object-cover"
           style={{ animation: "ken-burns 25s linear infinite alternate", willChange: "transform", backfaceVisibility: "hidden", transform: "translateZ(0)" }}
         >
+          <source src="/videos/vidoup-mobile.mp4" type="video/mp4" media="(max-width: 768px)" />
           <source src="/videos/vidoup.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-chocolate/40" />
